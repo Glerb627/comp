@@ -1,3 +1,5 @@
+--- START OF FILE Paste March 24, 2026 - 10:53PM ---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +8,18 @@
 <title>COMPILATION</title>
 <style>
   :root {
-    --theme-color: #00ffff; 
-    --lime: #39ff14;
-    --gold: #ffd700; 
-    --cyan: #00e5ff;
-    --orange: #ff6600;
-    --hot-pink: #ff00aa;
+    --theme-color: #00ffff; /* General theme color, e.g., for loading effects or fallback */
+    --cyan: #00e5ff;         /* Base cyan for general theme */
+    --lime: #39ff14;         /* Bright lime green */
+    --gold: #ffd700;         /* Gold */
+    --orange: #ff6600;       /* Vivid orange */
+    --hot-pink: #ff00aa;     /* Intense hot pink */
+    --electric-blue: #007fff; /* Bright electric blue */
+    --magenta: #ff00ff;      /* Pure magenta */
+    --bright-green: #32cd32; /* Lighter bright green */
+    --neon-red: #ff073a;     /* Fiery neon red */
+    --forest-green: #228b22; /* Deeper forest green */
+    --purple-haze: #7f00ff;  /* Rich purple */
   }
 
   body {
@@ -167,8 +175,8 @@
   .grid-container::-webkit-scrollbar { width: 0; }
 
   .place-btn {
-    background: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle base border */
     color: #e0e0e0;
     padding: 18px;
     font-size: 18px; 
@@ -177,68 +185,62 @@
     letter-spacing: 3px; 
     cursor: crosshair;
     border-radius: 8px;
-    transition: all 0.2s ease;
+    /* Smooth transitions for all interactive properties */
+    transition: all 0.3s ease-out, border-color 0.3s ease-out, box-shadow 0.4s ease-out, transform 0.3s ease-out;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    overflow: hidden;
-  }
-
-  .place-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 0; height: 0;
-    background: rgba(255,255,255,0.1);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.4s ease, height 0.4s ease;
-    z-index: 0;
-  }
-
-  .place-btn:hover::before {
-    width: 300px;
-    height: 300px;
+    overflow: hidden; /* Crucial for containing the glow */
   }
 
   .place-btn > * {
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Ensures content is above the glow effect */
   }
 
+  /* REFINE HOVER EFFECT: Subtle glow and slight scale for minimalist interactivity */
   .place-btn:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--theme-color);
-    color: #fff;
-    box-shadow: 0 0 20px var(--theme-color), inset 0 0 10px var(--theme-color);
-    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.08); /* Slightly more interactive background */
+    transform: scale(1.01); /* Very minimal lift for subtle movement */
+    border-color: rgba(255, 255, 255, 0.4); /* Slightly brighter base border on hover */
   }
 
-  .place-btn.is-new { border-color: var(--lime); color: #fff; box-shadow: 0 0 15px rgba(57, 255, 20, 0.2); }
-  .place-btn.is-new:hover { box-shadow: 0 0 25px rgba(57, 255, 20, 0.8), inset 0 0 10px rgba(57, 255, 20, 0.4); background: rgba(57, 255, 20, 0.1); }
-  
-  .place-btn.is-favorite { border-color: var(--gold); color: #fff; box-shadow: 0 0 15px rgba(255, 215, 0, 0.2); }
-  .place-btn.is-favorite:hover { box-shadow: 0 0 25px rgba(255, 215, 0, 0.8), inset 0 0 10px rgba(255, 215, 0, 0.4); background: rgba(255, 215, 0, 0.1); }
-  
-  .place-btn.is-classic { border-color: var(--cyan); box-shadow: 0 0 15px rgba(0, 229, 255, 0.2); color: #fff; }
-  .place-btn.is-classic:hover { box-shadow: 0 0 25px rgba(0, 229, 255, 0.6), inset 0 0 10px rgba(0, 229, 255, 0.3); background: rgba(0, 229, 255, 0.1); }
-  
-  .place-btn.is-hot { border-color: var(--orange); box-shadow: 0 0 15px rgba(255, 102, 0, 0.2); color: #fff; }
-  .place-btn.is-hot:hover { box-shadow: 0 0 25px rgba(255, 102, 0, 0.6), inset 0 0 10px rgba(255, 102, 0, 0.3); background: rgba(255, 102, 0, 0.1); }
-  
-  .place-btn.is-creator { border-color: var(--hot-pink); box-shadow: 0 0 15px rgba(255, 0, 170, 0.2); color: #fff; }
-  .place-btn.is-creator:hover { box-shadow: 0 0 25px rgba(255, 0, 170, 0.8), inset 0 0 10px rgba(255, 0, 170, 0.4); background: rgba(255, 0, 170, 0.1); }
+  /* Specific Color Classes for Distinct Borders */
+  .place-btn.is-cyan { border-color: var(--cyan); }
+  .place-btn.is-orange { border-color: var(--orange); }
+  .place-btn.is-neon-red { border-color: var(--neon-red); }
+  .place-btn.is-gold { border-color: var(--gold); }
+  .place-btn.is-bright-green { border-color: var(--bright-green); }
+  .place-btn.is-hot-pink { border-color: var(--hot-pink); }
+  .place-btn.is-electric-blue { border-color: var(--electric-blue); }
+  .place-btn.is-magenta { border-color: var(--magenta); }
+  .place-btn.is-forest-green { border-color: var(--forest-green); }
+
+  /* Enhanced Hover Box-Shadows for Sleek Neon Glow */
+  /* Using softer, more diffused glows for minimalism */
+  .place-btn.is-cyan:hover { box-shadow: 0 0 15px 5px rgba(0, 229, 255, 0.7); }
+  .place-btn.is-orange:hover { box-shadow: 0 0 15px 5px rgba(255, 102, 0, 0.7); }
+  .place-btn.is-neon-red:hover { box-shadow: 0 0 15px 5px rgba(255, 7, 58, 0.7); }
+  .place-btn.is-gold:hover { box-shadow: 0 0 15px 5px rgba(255, 215, 0, 0.7); }
+  .place-btn.is-bright-green:hover { box-shadow: 0 0 15px 5px rgba(50, 205, 50, 0.7); }
+  .place-btn.is-hot-pink:hover { box-shadow: 0 0 15px 5px rgba(255, 0, 170, 0.7); }
+  .place-btn.is-electric-blue:hover { box-shadow: 0 0 15px 5px rgba(0, 127, 255, 0.7); }
+  .place-btn.is-magenta:hover { box-shadow: 0 0 15px 5px rgba(255, 0, 255, 0.7); }
+  .place-btn.is-forest-green:hover { box-shadow: 0 0 15px 5px rgba(34, 139, 34, 0.7); } /* Using forest green hex value for shadow */
+
 
   .mini-label {
     font-size: 11px;
     margin-bottom: 5px;
     letter-spacing: 1px;
     text-shadow: 0 0 8px currentColor;
+    /* Animation is fine here, as it's for small badges */
     animation: pulseBadge 1.5s infinite alternate ease-in-out;
   }
 
+  /* These styles define the status text like 'working' or 'sometimes doesn't work' */
   .status-working {
     font-size: 11px;
     color: rgba(255, 255, 255, 0.4);
@@ -249,7 +251,6 @@
 
   .place-btn:hover .status-working { color: rgba(255, 255, 255, 0.9); }
 
-  /* NEW: Status Warning Styling */
   .status-warning {
     font-size: 11px;
     color: rgba(255, 102, 0, 0.6);
@@ -315,13 +316,16 @@
     document.getElementById('splash-text').innerText = quotes[Math.floor(Math.random() * quotes.length)];
 
     const places = [
-      { label: "PIE PLACE 01", hex: "68747470733a2f2f736f6469756d2d3568382e70616765732e646576", isClassic: true, warning: true },
-      { label: "PIE PLACE 02", hex: "68747470733a2f2f737a2d67616d65732e6769746875622e696f", isHot: true }, 
-      { label: "PIE PLACE 03", hex: "68747470733a2f2f73796e61707365636f72702e70616765732e6465762f", warning: true }, 
-      { label: "PIE PLACE 04", hex: "68747470733a2f2f666f72742e726569646368616c66696e2e776f726b6572732e646576", isFavorite: true },
-      { label: "PIE PLACE 05", hex: "68747470733a2f2f676168323232322e6769746875622e696f2f4e6f6f62732f" }, 
-      { label: "PIE PLACE 06", hex: "68747470733a2f2f676c6572623632372e6769746875622e696f2f736177352e392e352f", isCreator: true, isWiped: true },
-      { label: "PIE TEST SITE 01", hex: "68747470733a2f2f676c6572623632372e6769746875622e696f2f706f6b65322e312f", isTestSite: true }
+      // { label: "PIE PLACE 01", hex: "...", colorClass: 'is-cyan', warning: true, isClassic: true }, // Classic is now handled by visual distinction if desired, removed for more unique colors
+      { label: "PIE PLACE 01", hex: "68747470733a2f2f736f6469756d2d3568382e70616765732e646576", colorClass: 'is-cyan', warning: true }, // Kept warning, assigned cyan
+      { label: "PIE PLACE 02", hex: "68747470733a2f2f737a2d67616d65732e6769746875622e696f", colorClass: 'is-orange', isHot: true }, // Made Hot!, will show label
+      { label: "PIE PLACE 03", hex: "68747470733a2f2f73796e61707365636f72702e70616765732e6465762f", colorClass: 'is-neon-red', warning: true, isNew: true }, // Marked as New
+      { label: "PIE PLACE 04", hex: "68747470733a2f2f666f72742e726569646368616c66696e2e776f726b6572732e646576", colorClass: 'is-gold', isFavorite: true }, // Favorite label
+      { label: "PIE PLACE 05", hex: "68747470733a2f2f676168323232322e6769746875622e696f2f4e6f6f62732f", colorClass: 'is-bright-green', isClassic: true }, // Made Classic!, will show label
+      { label: "PIE PLACE 06", hex: "68747470733a2f2f676c6572623632372e6769746875622e696f2f736177352e392e352f", colorClass: 'is-hot-pink', isCreator: true, isWiped: true }, // Wiped and Creator label
+      { label: "PIE PLACE 07", hex: "68747470733a2f2f676c6572623632372e6769746875622e696f2f756d6272656c6c612f", colorClass: 'is-electric-blue', isNew: true }, // Marked as New
+      { label: "PIE PLACE 08", hex: "68747470733a2f2f676c6572623632372e6769746875622e696f2f636f696c2f", colorClass: 'is-magenta', isNew: true }, // Marked as New
+      { label: "PIE PLACE 09", hex: "68747470733a2f2f6769746875622e6769746c61622e696f2f", colorClass: 'is-forest-green', isNew: true } /* New place with forest green, marked as New */
     ];
 
     const menu = document.getElementById('menu');
@@ -331,42 +335,44 @@
       const btn = document.createElement('button');
       btn.className = 'place-btn';
       
+      // Apply the specific color class to the button for border and hover glow
+      if (p.colorClass) {
+        btn.classList.add(p.colorClass);
+      }
+
       let topLabel = '';
       let bottomLabel = '';
 
-      if (p.isNew) {
-        btn.classList.add('is-new');
+      // Logic for generating labels, prioritizing New/Wiped
+      if (p.isWiped) {
+        btn.classList.add('is-new'); // Use 'is-new' class for styling the new/wiped badges
+        topLabel = `<span class="mini-label" style="color: var(--hot-pink);">► BOARDS WIPED ◄</span>`;
+      } else if (p.isNew) {
         topLabel = `<span class="mini-label" style="color: var(--lime);">► NEW! ◄</span>`;
       }
-      if (p.isWiped) {
-        btn.classList.add('is-new'); 
-        topLabel = `<span class="mini-label" style="color: var(--hot-pink);">► BOARDS WIPED ◄</span>`;
-      }
-      if (p.isClassic) btn.classList.add('is-classic');
-      if (p.isHot) btn.classList.add('is-hot');
-
-      if (p.isFavorite) {
-        btn.classList.add('is-favorite');
-        topLabel = `<span class="mini-label" style="color: var(--gold);">★ FAVORITE ★</span>`;
+      
+      // Add other labels if no 'New' or 'Wiped' status is present, or append if logic allows
+      if (!topLabel) { // Only add other labels if topLabel is empty
+        if (p.isFavorite) {
+           topLabel = `<span class="mini-label" style="color: var(--gold);">★ FAVORITE ★</span>`;
+        } else if (p.isHot) {
+           topLabel = `<span class="mini-label" style="color: var(--orange);">🔥 HOT! 🔥</span>`;
+        } else if (p.isClassic) {
+           topLabel = `<span class="mini-label" style="color: var(--cyan);">⚙️ CLASSIC ⚙️</span>`;
+        }
       }
       
+      // Add bottom label specifically for creator
       if (p.isCreator) {
-        btn.classList.add('is-creator');
         bottomLabel = `<div style="font-size: 10px; color: var(--hot-pink); margin-top: 4px; letter-spacing: 1px;">MADE BY MEOWMASTER</div>`;
       }
-
-      if (p.isTestSite) {
-        btn.classList.add('is-creator'); // Fits the "I made" vibe
-        bottomLabel += `<div style="font-size: 9px; color: #ff00aa; margin-top: 6px; letter-spacing: 0.5px; line-height: 1.2; text-align: center;">just a little something I made, kinda buggy and not 100% working right now</div>`;
-      }
       
+      // Default status text if no specific warning is provided
       let statusHtml = p.warning 
         ? `<span class="status-warning">sometimes doesn't work</span>`
         : `<span class="status-working">working</span>`;
 
-      // Hide default status text if it's a custom test site to keep it clean
-      if (p.isTestSite) statusHtml = '';
-
+      // Combine all parts for the button's inner HTML
       btn.innerHTML = `${topLabel}<span>${p.label}</span>${bottomLabel}${statusHtml}`;
       
       btn.onclick = () => initSession(p.hex);
